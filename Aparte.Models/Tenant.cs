@@ -9,5 +9,6 @@ namespace Aparte.Models
     public class Tenant : Base
     {        
         public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
