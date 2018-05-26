@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Aparte.Models
 {
     public class Tenant : Base
-    {        
+    {
+        public string UniqueID { get; set; }
         public string Name { get; set; }
     }
 }

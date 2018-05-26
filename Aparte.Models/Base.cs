@@ -11,6 +11,7 @@ namespace Aparte.Models
     {
         [Key]
         public long PK { get; set; }
+        
         public DateTime? Inserted { get; set; }
         public DateTime? Deleted { get; set; }
     }
