@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Aparte.Models
 {
@@ -11,8 +8,19 @@ namespace Aparte.Models
     {
         [Key]
         public long PK { get; set; }
-        
-        public DateTime? Inserted { get; set; }
-        public DateTime? Deleted { get; set; }
+        public virtual string GlobalID { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public virtual DateTime? Inserted { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public virtual DateTime? LastModified { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public virtual DateTime? Deleted { get; set; }
+
+        // Concurrent Update Control (Optimistic Lock)
+        [Timestamp]
+        public virtual Byte[] Timestamp { get; set; }
     }
 }
