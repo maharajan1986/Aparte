@@ -13,7 +13,7 @@ namespace Aparte.ApiClient
         public event WebHttpException OnHttpWebException;
 
         public string Response { get; set; }
-        public ODataRequestMessage(DataServiceClientRequestMessageArgs args) : base(args) { }
+        public ODataRequestMessage(DataServiceClientRequestMessageArgs args) : base(args) {}
 
         public override IODataResponseMessage GetResponse()
         {
@@ -42,12 +42,13 @@ namespace Aparte.ApiClient
             var headerString = HttpHeader.ODataVerificationHeader(WinClient.ServerPublicKey, WinClient.PKSystemUser, WinClient.FKTenant, queryParameters);
 
             ODataRequestMessage message = null;
+            
             base.Configurations.RequestPipeline.OnMessageCreating = (args) =>
             {
-                message = new ODataRequestMessage(args);                
+                message = new ODataRequestMessage(args);                                
                 message.OnHttpWebException += Message_OnWebException;
                 return message;
-            };            
+            };                        
             this.SendingRequest2 += (sender, args) =>
             {
                 //var proxy = WinClient.Proxy;
@@ -58,7 +59,7 @@ namespace Aparte.ApiClient
                 //        var request = ((HttpWebRequestMessage)args.RequestMessage).HttpWebRequest;
                 //        request.Proxy = proxy.GetWebProxy();
                 //    }
-                //}                
+                //}                                
                 args.RequestMessage.SetHeader("Authorization", HttpHeaderScheme.Bearer.ToString() + " " + headerString);
             };
             this.ReceivingResponse += (sender, args) =>

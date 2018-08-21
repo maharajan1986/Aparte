@@ -45,8 +45,11 @@ namespace Client
                 try
                 {
                     //var attributes = odata.GetAttributes(ClientRule.IsUniqe.ToServerEnum()).ToList();
-                    odata.AddToTenants(new Tenant() { PK = 100, Code = "Test" });
-                    odata.SaveChanges();
+                    for (int i = 0; i < 1100; i++)
+                    {
+                        odata.AddToTenants(new Tenant() { PK = 200 + i, Name = $"Test{i}", Code = $"Test{i}" });
+                    }                    
+                    odata.SaveChanges(Microsoft.OData.Client.SaveChangesOptions.BatchWithSingleChangeset);
                 }
                 catch (Exception e)
                 {

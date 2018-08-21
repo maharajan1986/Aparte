@@ -4,6 +4,7 @@ using Aparte.Models;
 using Microsoft.AspNet.OData.Batch;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.OData;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,8 @@ namespace AparteApi
 
             //Configure Odata service
             ODataBatchHandler odataBatchHandler = new DefaultODataBatchHandler(GlobalConfiguration.DefaultServer);
-            odataBatchHandler.MessageQuotas.MaxOperationsPerChangeset = 1200;
-            odataBatchHandler.MessageQuotas.MaxPartsPerBatch = 2;
+            odataBatchHandler.MessageQuotas.MaxOperationsPerChangeset = 5000;
+            odataBatchHandler.MessageQuotas.MaxPartsPerBatch = 2;            
 
             //OData Route Configurations
             var builder = GetOdataModelBuilder();            

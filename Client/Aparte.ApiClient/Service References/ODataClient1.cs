@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 15/8/2018 14:43:46
+// Generation date: 21/8/2018 15:42:08
 namespace Aparte.ApiClient.Aparte.Models
 {
     /// <summary>
