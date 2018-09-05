@@ -17,7 +17,7 @@ namespace AparteApi
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MessageHandlers.Add(new SecurityHandler());            
+            //config.MessageHandlers.Add(new SecurityHandler());            
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
 
@@ -27,7 +27,7 @@ namespace AparteApi
             odataBatchHandler.MessageQuotas.MaxPartsPerBatch = 2;            
 
             //OData Route Configurations
-            var builder = GetOdataModelBuilder();            
+            var builder = Aparte.ModelBuilder.AparteModelBuilder.GetOdataModelBuilder();            
             config.MapODataServiceRoute(
                 routeName: "ODataV4Route",
                 routePrefix: "aparte",
@@ -50,31 +50,6 @@ namespace AparteApi
                 );
 
             config.EnsureInitialized();
-        }
-
-        private static ODataConventionModelBuilder GetOdataModelBuilder()
-        {
-            var builder = new ODataConventionModelBuilder();
-            
-            builder.Namespace = "ODataService";
-            #region Tenant            
-            builder.EntitySet<Tenant>("Tenants");
-            builder.EntitySet<SystemUser>("SystemUsers");
-            builder.EntitySet<TenantUser>("TenantUsers");
-            builder.EntitySet<xAttribute>("Attributes");
-
-            //var function = builder.Function("GetAttributes");
-            //function.Parameter<AttributeRule>("ValueRule");
-            //function.ReturnsCollectionFromEntitySet<xAttribute>("Attributes");
-
-            // Unbound function
-            var function = builder.Function("GetAttributes");
-            function.Parameter<AttributeRule>("ValueRule");
-            function.ReturnsCollectionFromEntitySet<xAttribute>("Attributes");
-            #endregion
-            builder.RemoveEnumType(typeof(AttributeRule));
-
-            return builder;
         }
     }
 }

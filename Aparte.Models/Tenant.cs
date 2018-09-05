@@ -5,10 +5,10 @@ namespace Aparte.Models
 {
     public class Tenant : Base
     {
-        public virtual string Code { get; set; }
+        public string Code { get; set; }
 
         [Required(ErrorMessage ="Name field is required."), StringLength(10, ErrorMessage="Cannot insert more than 10 character")]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
     }
     public class TenantMenu

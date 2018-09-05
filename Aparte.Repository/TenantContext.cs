@@ -29,9 +29,9 @@ namespace Aparte.Repository
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Tenant>().ToTable("tenant.Tenant");
-            modelBuilder.Entity<SystemUser>().ToTable("tenant.SystemUser");
-            modelBuilder.Entity<TenantUser>().ToTable("tenant.TenantUser");
+            modelBuilder.Entity<Tenant>().ToTable("dbo.Tenant");
+            modelBuilder.Entity<SystemUser>().ToTable("dbo.SystemUser");
+            modelBuilder.Entity<TenantUser>().ToTable("dbo.TenantUser");
             modelBuilder.Entity<xAttribute>().ToTable("dbo.Attribute");
         }
     }

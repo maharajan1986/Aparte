@@ -16,6 +16,15 @@ namespace Aparte.Repository.Test.TenantTests
             dbContext = new ApiContext();
         }
         [TestMethod]
+        public void Get()
+        {
+            //Arrange
+            var tenant = dbContext.Tenants.FirstOrDefault();
+           
+            //Assert
+            Assert.IsNotNull(tenant.PK);
+        }
+        [TestMethod]
         public void Add()
         {
             //Arrange

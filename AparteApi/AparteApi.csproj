@@ -188,6 +188,10 @@
       <Project>{0FF1834B-09F2-4FB1-A2E1-F187080A50CB}</Project>
       <Name>Aparte.MasterData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Aparte.ModelBuilder\Aparte.ModelBuilder.csproj">
+      <Project>{013c43d6-7af8-4b27-80ec-02a743b3395f}</Project>
+      <Name>Aparte.ModelBuilder</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aparte.Models\Aparte.Models.csproj">
       <Project>{608c117b-f3c1-419f-b2e7-b52ede6e6448}</Project>
       <Name>Aparte.Models</Name>
